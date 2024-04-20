@@ -18,10 +18,12 @@ public class ProfilePage extends BasePage {
     private WebElement buttonSend;
     @FindBy(xpath = "//a[@class='layer__link']")
     private WebElement confirmation;
-    @FindBy(xpath = "//img[@class='ph-avatar-img svelte-dfhuqc']")
+    @FindBy(xpath = "//img[starts-with(@class, \"ph-avatar-img\")]")
     private WebElement avatar;
     @FindBy(xpath = "//div[text()='Выйти']")
     private WebElement buttonLogout;
+    @FindBy(xpath = "//span[@title='Закрыть']")
+    private WebElement close;
 
 
     public ProfilePage() {
@@ -40,6 +42,7 @@ public class ProfilePage extends BasePage {
     }
 
     public void logout() {
+        close.click();
         avatar.click();
         buttonLogout.click();
     }
