@@ -19,6 +19,7 @@ public class SendLetterTest extends BaseTest {
         mainPage.initAuth()
                 .fillFormLogin(login)
                 .fillFormPass(password);
+        wd.switchTo().defaultContent();
     }
 
     @Test

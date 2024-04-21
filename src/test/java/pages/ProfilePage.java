@@ -2,12 +2,18 @@ package pages;
 
 import core.BasePage;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class ProfilePage extends BasePage {
 
+    Actions actions = new Actions(wd);
     @FindBy(xpath = "//span[@class='compose-button__txt']")
     private WebElement writeALetter;
     @FindBy(xpath = "//input[@type='text' and @tabindex='100']")
@@ -25,7 +31,6 @@ public class ProfilePage extends BasePage {
     @FindBy(xpath = "//span[@title='Закрыть']")
     private WebElement close;
 
-
     public ProfilePage() {
         PageFactory.initElements(wd, this);
     }
@@ -33,7 +38,8 @@ public class ProfilePage extends BasePage {
     public void toSendALetter(String addressRecipient, String letter) {
         writeALetter.click();
         address.sendKeys(addressRecipient);
-        fieldInputText.sendKeys(letter);
+        new WebDriverWait(wd, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(fieldInputText));
+        actions.moveToElement(fieldInputText).click().sendKeys(letter).build().perform();
         buttonSend.click();
     }
 
