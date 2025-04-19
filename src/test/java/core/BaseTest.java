@@ -13,7 +13,7 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUp() {
-        wd = DriverConfiguration.createWebDriver(Constants.CHROME);
+        wd = DriverConfiguration.createWebDriver(Constants.FIREFOX);
         BasePage.setDriver(wd);
 
     }
