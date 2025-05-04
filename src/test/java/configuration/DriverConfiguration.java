@@ -48,6 +48,7 @@ public class DriverConfiguration {
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-web-security");
         options.addArguments("--ignore-certificate-errors");
+        //options.addArguments("--headless");
         options.addArguments("--silent");
         return options;
     }
